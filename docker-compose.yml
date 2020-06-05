@@ -1,0 +1,5 @@
+version: '3'
+services:
+  app:
+    build: ./code
+    container_name: 'bot_discord'
