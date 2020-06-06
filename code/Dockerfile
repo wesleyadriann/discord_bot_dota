@@ -14,7 +14,13 @@ RUN apk add --update \
     linux-headers \
     pcre-dev \
     gcc \
-    libffi-dev 
+    libxml2-dev \
+    zlib-dev \
+    libxslt-dev \
+    libffi-dev \
+    libressl-dev
+
+#  libxslt1-dev \ libssl-dev \     zlib1g-dev \
 
 COPY ./requirements.txt /requirements.txt
 
@@ -25,6 +31,6 @@ WORKDIR /app
 
 COPY ./app .
 
-ENV DISCORD_BOT_KEY "NjAwODY2MTM0OTI0OTg0MzIw.Xtmecg.jW7CCNn_lumx_44iNSmqKN-UY5E"
+ENV DISCORD_BOT_KEY "key"
 
 ENTRYPOINT python __init__.py
