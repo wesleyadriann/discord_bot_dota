@@ -12,5 +12,5 @@ class Configuration:
         self.DISCORD_BOT_KEY = os.environ.get('DISCORD_BOT_KEY')
 
     def configure_hero_counters_full(self, hero):
-        hero_name = '-'.join(hero.split())
+        hero_name = '-'.join(hero.split()).lower()
         self.HERO_COUNTERS_FULL = f'{self.HEROES}/{hero_name}{self.HERO_COUNTERS}'
