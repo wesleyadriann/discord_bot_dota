@@ -3,16 +3,15 @@
 
 from Bot import CreateBot
 from logger import logger_discord
-import get_heroes
-import get_hero
+from spiders import get_hero, get_heroes
 from configuration import Configuration
+import runner
 
 logger_discord()
 config = Configuration()
 
 def main():
-    heroes = get_heroes.run()
-
+    heroes = runner.run(get_heroes.Get_Heroes)
     bot = CreateBot(heroes)
     bot.run(config.DISCORD_BOT_KEY)
 

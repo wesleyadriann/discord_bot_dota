@@ -94,7 +94,7 @@ class CreateBot(Client):
                     break
 
             if(finded):
-                hero_info = await get_hero.run(hero)
+                hero_info = ''
                 logger.info(hero_info)
                 text = f'Heroi selecionado **{hero}**\n {hero_info}'
             else:

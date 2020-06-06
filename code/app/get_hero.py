@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import scrapy
-from scrapy.crawler import CrawlerProcess
 from scrapy.selector import Selector
-from scrapy.utils.project import get_project_settings
 
 from configuration import Configuration
 from logger import create_logger
@@ -35,20 +33,4 @@ class Get_Hero(scrapy.Spider):
 
     def get_data(self):
         return self.__hero
-
-
-async def run(hero_name):
-    logger.info('RUNNING')
-    process = CrawlerProcess(get_project_settings())
-
-    crawl = process.create_crawler(Get_Hero)
-    process.crawl(crawl, hero_name=hero_name)
-    process.start()
-
-
-    hero = crawl.spider.get_data()
-    logger.info(hero)
-
-    return hero
-
 
