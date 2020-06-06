@@ -54,7 +54,8 @@ class CreateBot(Client):
                 options = ['Herói: Pugna', 'Herói: Dazzle', 'Com quem você se sentir mais confortavel, abraço.']
                 text = options[randrange(0, 3)]
             elif(message.author.id == 315499525701632002):
-                text = "Com quem você se sentir mais confortavel, abraço."
+                options = [lambda: "Com quem você se sentir mais confortavel, abraço.", self.command_heroes]
+                text = options[randrange(0, 2)]()
             else:
                 text = self.command_voudq()
             logger.info(f'\n\nCommand: voudq | response: {text}')
