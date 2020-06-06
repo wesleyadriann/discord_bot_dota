@@ -3,11 +3,10 @@
 
 import os
 import scrapy
-from scrapy.crawler import CrawlerProcess
 import discord
 
 from logger import logger_discord, create_logger
-from get_heroes import Get_Heroes
+from get_heroes import Get_Heroes, run as run_get_heroes
 
 manual_logger = create_logger(name = 'BOT_DOTA')
 
@@ -94,15 +93,9 @@ class BotDota(discord.Client):
 
 
 
-process = CrawlerProcess({
-    'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'
-})
-process.crawl(Get_Heroes)
-process.start()
 
-heroes_file = open('heroes.txt', 'r')
-heroes = heroes_file.read()
-heroes_file.close()
+heroes = run_get_heroes()
+
 
 bot = BotDota(heroes)
 bot.run(os.environ.get('DISCORD_BOT_KEY'))
