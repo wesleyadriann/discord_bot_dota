@@ -17,5 +17,4 @@ def main():
     bot.run(config.DISCORD_BOT_KEY)
 
 if __name__ == '__main__':
-    # main()
-    get_hero.run('zeus')
+    main()

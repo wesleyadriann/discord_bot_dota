@@ -16,7 +16,7 @@ class CreateBot(Client):
 
 
     async def on_ready(self):
-        logger.info('\n\nBot is ready on as {0}! \n\n'.format(self.user))
+        logger.info(f'\n\nBot {self.user}is ready! \n\n')
         activity = Activity(
             name='$ajuda',
             type=ActivityType.listening,
@@ -44,15 +44,13 @@ class CreateBot(Client):
             logger.info(f'\n\nCommand: herois | response: {text}')
             await send_message(text)
         elif(command == 'counter'):
+            await send_message('Ok, um momento.')
             text = self.command_counter(content)
             logger.info(f'\n\nCommand: counter | response: {text}')
             await send_message(text)
         elif(command == 'voudq' or command == 'voudeq'):
             text = ""
             if(message.author.id == 486367785975414794):
-                # 486367785975414794
-                # 413494407841710081
-                # 315499525701632002
                 text = "Com quem você se sentir mais confortavel, abraço."
             elif(message.author.id == 315499525701632002):
                 text = "Com quem você se sentir mais confortavel, abraço."
@@ -95,8 +93,9 @@ class CreateBot(Client):
                     break
 
             if(finded):
-                hero_status = get_hero.run(hero)
-                text = f'Heroi selecionado **{hero}**\n {hero_status}'
+                hero_info = get_hero.run(hero)
+                logger.info(hero_info)
+                text = f'Heroi selecionado **{hero}**\n {hero_info}'
             else:
                 text = f'Heroi {hero} não foi encontrado, herois disponíveis **>herois**'
 
