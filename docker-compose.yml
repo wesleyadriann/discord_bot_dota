@@ -3,3 +3,5 @@ services:
   app:
     build: ./code
     container_name: 'bot_discord'
+    env_file:
+        - .env
