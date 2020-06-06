@@ -4,6 +4,7 @@
 import scrapy
 from scrapy.selector import Selector
 
+import runner
 from configuration import Configuration
 from logger import create_logger
 
@@ -29,8 +30,12 @@ class Get_Hero(scrapy.Spider):
             'benefits': heroes_benefits,
         }
 
+        logger.info('Sucess parse')
         return
 
     def get_data(self):
         return self.__hero
 
+def run(hero_name):
+    data = runner.run(Get_Hero, hero_name=hero_name)
+    return data

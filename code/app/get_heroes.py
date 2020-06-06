@@ -4,6 +4,7 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
 
+import runner
 from configuration import Configuration
 from logger import create_logger
 
@@ -18,6 +19,7 @@ class Get_Heroes(scrapy.Spider):
     def parse(self, response):
         names = response.css('.name').xpath('text()').extract()
         self.__heroes = '\n'.join(names)
+        logger.info('Sucess parse')
 
     def get_data(self):
         return self.__heroes
@@ -35,3 +37,7 @@ def run():
 
     heroes = crawl.spider.get_data()
     return heroes
+
+def run():
+    data = runner.run(Get_Heroes)
+    return data
