@@ -45,13 +45,14 @@ class CreateBot(Client):
             await send_message(text)
         elif(command == 'counter'):
             await send_message('Ok, um momento.')
-            text = self.command_counter(content)
+            text = await self.command_counter(content)
             logger.info(f'\n\nCommand: counter | response: {text}')
             await send_message(text)
         elif(command == 'voudq' or command == 'voudeq'):
             text = ""
             if(message.author.id == 486367785975414794):
-                text = "Com quem você se sentir mais confortavel, abraço."
+                options = ['Herói: Pugna', 'Herói: Dazzle', 'Com quem você se sentir mais confortavel, abraço.']
+                text = options[randrange(0, 3)]
             elif(message.author.id == 315499525701632002):
                 text = "Com quem você se sentir mais confortavel, abraço."
             else:
@@ -76,7 +77,7 @@ class CreateBot(Client):
         text = 'Herois do Dota:\n' + '\n'.join(heroes)
         return text
 
-    def command_counter(self, content):
+    async def command_counter(self, content):
         text = ""
         try:
             hero = content[1:]
@@ -93,7 +94,7 @@ class CreateBot(Client):
                     break
 
             if(finded):
-                hero_info = get_hero.run(hero)
+                hero_info = await get_hero.run(hero)
                 logger.info(hero_info)
                 text = f'Heroi selecionado **{hero}**\n {hero_info}'
             else:
