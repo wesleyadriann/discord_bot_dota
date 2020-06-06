@@ -13,4 +13,4 @@ class Configuration:
 
     def configure_hero_counters_full(self, hero):
         hero_name = '-'.join(hero.split())
-        self.HERO_COUNTERS_FULL = f'{self.HEROESGet_Heroes}/{hero_name}{self.HERO_COUNTERS}'
+        self.HERO_COUNTERS_FULL = f'{self.HEROES}/{hero_name}{self.HERO_COUNTERS}'

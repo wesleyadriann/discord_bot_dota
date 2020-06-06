@@ -4,6 +4,7 @@
 from Bot import CreateBot
 from logger import logger_discord
 import get_heroes
+import get_hero
 from configuration import Configuration
 
 logger_discord()
@@ -16,4 +17,5 @@ def main():
     bot.run(config.DISCORD_BOT_KEY)
 
 if __name__ == '__main__':
-    main()
+    # main()
+    get_hero.run('zeus')

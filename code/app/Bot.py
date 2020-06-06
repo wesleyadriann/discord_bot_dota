@@ -1,8 +1,10 @@
 
 # -*- coding: utf-8 -*-
 
-from discord import Client, Activity, ActivityType
+from random import randrange
 
+from discord import Client, Activity, ActivityType
+import get_hero
 from logger import create_logger
 
 
@@ -16,7 +18,7 @@ class CreateBot(Client):
     async def on_ready(self):
         logger.info('\n\nBot is ready on as {0}! \n\n'.format(self.user))
         activity = Activity(
-            name='>ajuda',
+            name='$ajuda',
             type=ActivityType.listening,
             )
         await self.change_presence(activity=activity)
@@ -24,10 +26,12 @@ class CreateBot(Client):
     async def on_message(self, message):
         if (
             (message.author == self.user) or
-            (not message.content.startswith('>')) or
+            (not message.content.startswith('$')) or
             (len(message.content) < 2)
             ):
             return
+
+        logger.info(message.author.id)
 
         send_message = message.channel.send
 
@@ -43,9 +47,21 @@ class CreateBot(Client):
             text = self.command_counter(content)
             logger.info(f'\n\nCommand: counter | response: {text}')
             await send_message(text)
+        elif(command == 'voudq' or command == 'voudeq'):
+            text = ""
+            if(message.author.id == 486367785975414794):
+                # 486367785975414794
+                # 413494407841710081
+                # 315499525701632002
+                text = "Com quem você se sentir mais confortavel, abraço."
+            elif(message.author.id == 315499525701632002):
+                text = "Com quem você se sentir mais confortavel, abraço."
+            else:
+                text = self.command_voudq()
+            logger.info(f'\n\nCommand: voudq | response: {text}')
+            await send_message(text)
         else:
             await send_message(f'{message.author} digitou: {message.content}')
-
 
     def command_heroes(self):
         text = ""
@@ -79,11 +95,19 @@ class CreateBot(Client):
                     break
 
             if(finded):
-                text = f'Heroi selecionado {hero}'
+                hero_status = get_hero.run(hero)
+                text = f'Heroi selecionado **{hero}**\n {hero_status}'
             else:
                 text = f'Heroi {hero} não foi encontrado, herois disponíveis **>herois**'
 
         except IndexError as error:
             text = 'Comando errado, formato correto: **>counter heroi**'
 
+        return text
+
+    def command_voudq(self):
+        text = ""
+        total_heroes = len(self.heroes)
+        number = randrange(0, total_heroes)
+        text = f'Herói: {self.heroes[number]}'
         return text
