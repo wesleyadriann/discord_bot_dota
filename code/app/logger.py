@@ -3,12 +3,13 @@
 
 import logging
 
-logging.basicConfig(level=logging.INFO)
-logger_discord = logging.getLogger('discord')
-logger_discord.setLevel(logging.DEBUG)
-handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
-handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
-logger_discord.addHandler(handler)
+def logger_discord():
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger('discord')
+    logger.setLevel(logging.DEBUG)
+    handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+    handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+    logger.addHandler(handler)
 
 def create_logger(name = 'logger_name'):
     m_logger = logging.getLogger(name)
