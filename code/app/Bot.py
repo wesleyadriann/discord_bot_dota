@@ -59,32 +59,6 @@ class CreateBot(Client):
         if(text):
             await send_message(text)
 
-        # if(command == 'herois'):
-        #     text = self.command_heroes()
-        #     logger.info(f'\n\nCommand: herois | response: {text}')
-        #     await send_message(text)
-        # elif(command == 'counter'):
-        #     await send_message('A emoção mais antiga e mais forte da humanidade é o medo, e o mais antigo e mais forte de todos os medos é o medo do desconhecido.')
-        #     text = self.command_counter(content)
-        #     logger.info(f'\n\nCommand: counter | response: {text}')
-        #     await send_message(text)
-        # elif(command == 'voudq' or command == 'voudeq'):
-        #     text = ""
-        #     if(message.author.id == 486367785975414794):
-        #         options = ['Herói: Pugna', 'Herói: Dazzle', 'Com quem você se sentir mais confortavel, abraço.']
-        #         text = options[randrange(0, 3)]
-        #     elif(message.author.id == 315499525701632002):
-        #         options = [lambda: "Com quem você se sentir mais confortavel, abraço.", self.command_heroes]
-        #         text = options[randrange(0, 2)]()
-        #     else:
-        #         text = self.command_voudq()
-        #     logger.info(f'\n\nCommand: voudq | response: {text}')
-        #     await send_message(text)
-        # elif(command == 'ajuda'):
-
-        # else:
-        #     await send_message(f'{message.author}, o commando {message.content} não existe, utilize **$ajuda**')
-
     def command_heroes(self, **kwargs):
         text = ""
         heroes = []
