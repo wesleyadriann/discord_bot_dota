@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from Bot import CreateBot
-from logger import logger_discord
+from configuration.logger import logger_discord
 import runner
 import spiders.get_heroes as get_heroes
 from configuration.configuration import Configuration
