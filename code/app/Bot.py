@@ -4,11 +4,12 @@
 from random import randrange
 
 from discord import Client, Activity, ActivityType
-import get_hero
-from logger import create_logger
+import spiders.get_hero as get_hero
+from configuration.logger import create_logger
 
 
 logger = create_logger(name = 'BOT_DOTA')
+
 class CreateBot(Client):
     def __init__(self, heroes):
         super().__init__()

@@ -5,8 +5,8 @@ import scrapy
 from scrapy.selector import Selector
 
 import runner
-from configuration import Configuration
-from logger import create_logger
+from configuration.configuration import Configuration
+from configuration.logger import create_logger
 
 config = Configuration()
 logger = create_logger('GET_HERO')

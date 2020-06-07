@@ -5,8 +5,8 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 
 import runner
-from configuration import Configuration
-from logger import create_logger
+from configuration.configuration import Configuration
+from configuration.logger import create_logger
 
 config = Configuration()
 logger = create_logger('GET_HEROES')
@@ -24,19 +24,6 @@ class Get_Heroes(scrapy.Spider):
     def get_data(self):
         return self.__heroes
 
-
-def run():
-    logger.info('RUNNING')
-    process = CrawlerProcess({
-        'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'
-    })
-
-    crawl = process.create_crawler(Get_Heroes)
-    process.crawl(crawl)
-    process.start()
-
-    heroes = crawl.spider.get_data()
-    return heroes
 
 def run():
     data = runner.run(Get_Heroes)

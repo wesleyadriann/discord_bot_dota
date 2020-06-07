@@ -3,8 +3,9 @@
 
 from Bot import CreateBot
 from logger import logger_discord
-import get_hero, get_heroes, runner
-from configuration import Configuration
+import runner
+import spiders.get_heroes as get_heroes
+from configuration.configuration import Configuration
 
 logger_discord()
 config = Configuration()

@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from multiprocessing import Process, Queue
-from scrapy.crawler import CrawlerProcess, CrawlerRunner
+from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
-from twisted.internet import reactor
 
-from logger import create_logger
+from configuration.logger import create_logger
 
 logger = create_logger('RUNNER')
 
