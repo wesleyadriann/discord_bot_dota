@@ -47,7 +47,7 @@ docker run <IMAGE_NAME>
 ```
 
 ### 🐳 Com Docker Compose
-Na raiz do projeto adicione o arquivo .env com a variável **DISCORD_BOT_KEY**
+Na raiz do projeto adicione o arquivo .env com a variável **DISCORD_BOT_KEY**   
 Execute docker-compose
 ```bash
 docker-compose up --build
