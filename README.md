@@ -1,7 +1,7 @@
 Discord Dota
 ============
 
-## 📝 Description
+## 📝 Descrição
 
 Bot do Discord para exibir informações dos heróis
 
